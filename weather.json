@@ -1,0 +1,63 @@
+[
+
+    {
+  
+      "city": "Vienna",
+  
+      "forecast": [
+  
+        { "date": "2025-03-13", "temperature": "15°C", "humidity": "55%", "condition": "Sunny", "wind_speed": "10 km/h" },
+  
+        { "date": "2025-03-14", "temperature": "17°C", "humidity": "50%", "condition": "Partly Cloudy", "wind_speed": "12 km/h" },
+  
+        { "date": "2025-03-15", "temperature": "14°C", "humidity": "58%", "condition": "Cloudy", "wind_speed": "9 km/h" },
+  
+        { "date": "2025-03-16", "temperature": "12°C", "humidity": "65%", "condition": "Rainy", "wind_speed": "15 km/h" },
+  
+        { "date": "2025-03-17", "temperature": "10°C", "humidity": "70%", "condition": "Rainy", "wind_speed": "18 km/h" },
+  
+        { "date": "2025-03-18", "temperature": "8°C", "humidity": "75%", "condition": "Stormy", "wind_speed": "22 km/h" },
+  
+        { "date": "2025-03-19", "temperature": "9°C", "humidity": "72%", "condition": "Cloudy", "wind_speed": "14 km/h" },
+  
+        { "date": "2025-03-20", "temperature": "13°C", "humidity": "60%", "condition": "Partly Cloudy", "wind_speed": "11 km/h" },
+  
+        { "date": "2025-03-21", "temperature": "16°C", "humidity": "55%", "condition": "Sunny", "wind_speed": "10 km/h" },
+  
+        { "date": "2025-03-22", "temperature": "18°C", "humidity": "50%", "condition": "Sunny", "wind_speed": "9 km/h" }
+  
+      ]
+  
+    },
+  
+    {
+  
+      "city": "Prague",
+  
+      "forecast": [
+  
+        { "date": "2025-03-13", "temperature": "12°C", "humidity": "60%", "condition": "Cloudy", "wind_speed": "8 km/h" },
+  
+        { "date": "2025-03-14", "temperature": "14°C", "humidity": "55%", "condition": "Partly Cloudy", "wind_speed": "10 km/h" },
+  
+        { "date": "2025-03-15", "temperature": "11°C", "humidity": "65%", "condition": "Rainy", "wind_speed": "13 km/h" },
+  
+        { "date": "2025-03-16", "temperature": "9°C", "humidity": "70%", "condition": "Rainy", "wind_speed": "15 km/h" },
+  
+        { "date": "2025-03-17", "temperature": "7°C", "humidity": "75%", "condition": "Stormy", "wind_speed": "20 km/h" },
+  
+        { "date": "2025-03-18", "temperature": "6°C", "humidity": "78%", "condition": "Stormy", "wind_speed": "23 km/h" },
+  
+        { "date": "2025-03-19", "temperature": "8°C", "humidity": "72%", "condition": "Cloudy", "wind_speed": "14 km/h" },
+  
+        { "date": "2025-03-20", "temperature": "10°C", "humidity": "65%", "condition": "Cloudy", "wind_speed": "12 km/h" },
+  
+        { "date": "2025-03-21", "temperature": "13°C", "humidity": "60%", "condition": "Partly Cloudy", "wind_speed": "10 km/h" },
+  
+        { "date": "2025-03-22", "temperature": "15°C", "humidity": "55%", "condition": "Sunny", "wind_speed": "9 km/h" }
+  
+      ]
+  
+    }
+  
+  ]

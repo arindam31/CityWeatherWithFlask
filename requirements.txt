@@ -1,0 +1,11 @@
+# connexion[flask, swagger-ui]
+# swagger-ui-bundle==1.1.0
+cryptography==44.0.2
+flask==3.1.0
+flask-jwt-extended==4.7.1
+Flask_Migrate==4.1.0
+flask-sqlalchemy==3.1.1
+pymysql==1.1.1
+python-dotenv==1.0.1
+Flask-Admin==1.6.1
+gunicorn==23.0.0

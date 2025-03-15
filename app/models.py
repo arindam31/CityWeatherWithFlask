@@ -1,0 +1,24 @@
+from app import db
+from sqlalchemy.orm import relationship
+
+
+class CityWeather(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    city = db.Column(db.String, unique=True)
+    
+    forecast = relationship("Forecast", back_populates="city_weather")
+
+    def __repr__(self):
+        return self.id
+
+
+class Forecast(db.Model):
+    __tablename__ = 'forecast'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.String)
+    temperature = db.Column(db.String)
+    humidity = db.Column(db.String)
+    condition = db.Column(db.String)
+    wind_speed = db.Column(db.String)
+    city_id = db.Column(db.Integer, db.ForeignKey('city_weather.id'))

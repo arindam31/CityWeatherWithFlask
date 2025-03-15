@@ -1,0 +1,19 @@
+# Python virtual environment
+.venv/
+
+# Environment variables file
+.env
+
+# Python bytecode files
+*.pyc
+__pycache__/
+
+# Instance folder (usually contains configuration or session data)
+instance/
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+.coverage
+htmlcov/

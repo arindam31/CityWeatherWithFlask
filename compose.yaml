@@ -1,0 +1,34 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $*ItSComplicated*$
+      MYSQL_DATABASE: flask_proj_db
+      MYSQL_USER: projectuser
+      MYSQL_PASSWORD: onecomplexpasswrd
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # The MySQL container will automatically execute any .sql files inside 
+      # the /docker-entrypoint-initdb.d/ directory during startup.
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql 
+
+  flask_app:
+    build: .
+    container_name: flask_app_container
+    restart: always
+    environment:
+      - FLASK_APP=app
+      - FLASK_ENV=development
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
