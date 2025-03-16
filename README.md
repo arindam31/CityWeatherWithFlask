@@ -6,9 +6,9 @@
 - Permissions
 
 # QUICK Start
-- create a .env file at root.
-- Install docker and start the container
-- Visit localhost:5000
+- create a .env file at root. Add variables as shown below.
+- On shell, use: flask run
+- Visit url: 127:0.0.1:5000
 
 # ENV file contents
 Add these in the .env file:
