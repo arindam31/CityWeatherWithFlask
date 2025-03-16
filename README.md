@@ -19,6 +19,11 @@ FLASK_ENV=development
 
 
 # Running the project
+- With flask command directly:
+ ```bash
+ flask run
+ ```
+
 - Start the docker container
  ```bash
  docker compose up --build
