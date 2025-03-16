@@ -17,3 +17,6 @@ instance/
 # Coverage reports
 .coverage
 htmlcov/
+
+# databases
+*.db

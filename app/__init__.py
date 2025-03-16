@@ -31,7 +31,7 @@ mock_data = load_mock_data("weather.json")
 
 from app import routes, models
 from app.apis import weather
-from app.commands import load_mock_data_command
+from app.commands import load_mock_data_command, purge_db
 
 weather_api = Api(app)
 weather_api.add_resource(
@@ -42,3 +42,4 @@ weather_api.add_resource(
 
 # Command registration
 app.cli.add_command(name="load_data", cmd=load_mock_data_command)
+app.cli.add_command(name="purge_data", cmd=purge_db)

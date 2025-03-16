@@ -17,6 +17,9 @@ def load_mock_data_command():
         city_weather = CityWeather(city=city_data["city"])
         db.session.add(city_weather)
 
+        # since we need the id and it wont be available before we commit.
+        db.session.flush()
+
         # Create forecast objects for city
         for fore_cast in city_data["forecast"]:
             forecast = Forecast(
@@ -31,3 +34,15 @@ def load_mock_data_command():
     
     db.session.commit()
     click.echo("Mock data loaded successfully!")
+    
+
+@click.command("purge-data")
+@with_appcontext
+def purge_db():
+    """Deletes all data from the database."""
+    from app import db
+
+    db.session.query(Forecast).delete()  # Delete Forecast records first (due to FK constraint)
+    db.session.query(CityWeather).delete()  # Then delete CityWeather records
+    db.session.commit()
+    click.echo("Database purged successfully.")
