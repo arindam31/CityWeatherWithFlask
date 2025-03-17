@@ -35,10 +35,15 @@ from app.commands import load_mock_data_command, purge_db
 
 weather_api = Api(app)
 weather_api.add_resource(
-    weather.CityWeatherAPI,
-    "/cityweather/<string:city>",
-    "/cityweather/<string:city>/<string:date>",
+    weather.CityWeatherWithMockDataListAPI,
+    "/cityweather/mocked/<string:city>",
+    "/cityweather/mocked/<string:city>/<string:date>",
 )
+weather_api.add_resource(
+    weather.CityWeatherFromDatabaseListAPI,
+    "/cityweather/db/<string:city>",
+    "/cityweather/db/<string:city>/<string:date>",
+    )
 
 # Command registration
 app.cli.add_command(name="load_data", cmd=load_mock_data_command)
