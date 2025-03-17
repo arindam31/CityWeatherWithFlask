@@ -23,6 +23,7 @@ services:
     environment:
       - FLASK_APP=app
       - FLASK_ENV=development
+      - DOCKERIZED=1
     ports:
       - "5000:5000"
     volumes:

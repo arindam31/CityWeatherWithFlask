@@ -13,5 +13,5 @@ COPY . /app/
 
 # Set the entrypoint to run Flask
 # CMD ["flask", "run", "--host", "0.0.0.0"]
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app.app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
 # CMD ["uvicorn", "app.app:app", "--host", "0.0.0.0", "--port", "5000"]
