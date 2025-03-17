@@ -2,7 +2,6 @@ import json
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_restful import Api
 from config import Config
 
 
@@ -11,6 +10,7 @@ migrate = Migrate()
 
 
 def load_mock_data(filename):
+    """Function to read data from json file."""
     with open(filename) as fop:
         json_data = json.load(fop)
     return json_data
@@ -27,23 +27,16 @@ def create_app():
 
 
 app = create_app()
+
+# Loading mock data
 mock_data = load_mock_data("weather.json")
 
 from app import routes, models
-from app.apis import weather
 from app.commands import load_mock_data_command, purge_db
+from app.blueprints import weather_bp
 
-weather_api = Api(app)
-weather_api.add_resource(
-    weather.CityWeatherWithMockDataListAPI,
-    "/cityweather/mocked/<string:city>",
-    "/cityweather/mocked/<string:city>/<string:date>",
-)
-weather_api.add_resource(
-    weather.CityWeatherFromDatabaseListAPI,
-    "/cityweather/db/<string:city>",
-    "/cityweather/db/<string:city>/<string:date>",
-    )
+# Blueprints registration.
+app.register_blueprint(weather_bp, url_prefix="/api")
 
 # Command registration
 app.cli.add_command(name="load_data", cmd=load_mock_data_command)
