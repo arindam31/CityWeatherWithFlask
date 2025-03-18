@@ -1,9 +1,9 @@
 from flask import Blueprint
 from flask_restful import Api
 from app.apis.weather_api import (
-    CityWeather,
     CityWeatherFromDatabaseListAPI,
     CityWeatherWithMockDataListAPI,
+    CityWeatherDetailsFromDatabase,
 )
 
 weather_bp = Blueprint("weather", __name__)
@@ -18,4 +18,8 @@ weather_api.add_resource(
     CityWeatherFromDatabaseListAPI,
     "/cityweather/db/<string:city>",
     "/cityweather/db/<string:city>/<string:date>",
+    )
+weather_api.add_resource(
+    CityWeatherDetailsFromDatabase,
+    "/cityweather/db/<int:id>",
     )

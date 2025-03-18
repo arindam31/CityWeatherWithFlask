@@ -39,18 +39,13 @@ docker exec -ti flask_app_container bash
  ```bash
 docker exec -it flask_app_container flask routes
 
-Endpoint           Methods    Rule
------------------  ---------  ---------------------------------
-admin.index        GET        /admin/
-admin.static       GET        /admin/static/<path:filename>    
-static             GET        /static/<path:filename>
-user.action_view   POST       /admin/user/action/
-user.ajax_lookup   GET        /admin/user/ajax/lookup/
-user.ajax_update   POST       /admin/user/ajax/update/
-user.create_view   GET, POST  /admin/user/new/
-user.delete_view   POST       /admin/user/delete/
-user.details_view  GET        /admin/user/details/
-user.edit_view     GET, POST  /admin/user/edit/
-user.export        GET        /admin/user/export/<export_type>/
-user.index_view    GET        /admin/user/
+Endpoint                                Methods    Rule
+-------------------------------------  ---------  ---------------------------------
+get_city_forecast                       GET        /forecast/<city>/<date>
+get_city_forecast                       GET        /forecast/<city>/
+static                                  GET        /static/<path:filename>
+weather.cityweatherfromdatabaselistapi  GET, POST  /api/cityweather/db/<string:city>/<string:date>
+weather.cityweatherfromdatabaselistapi  GET, POST  /api/cityweather/db/<string:city>
+weather.cityweatherwithmockdatalistapi  GET        /api/cityweather/mocked/<string:city>/<string:date>
+weather.cityweatherwithmockdatalistapi  GET        /api/cityweather/mocked/<string:city>
  ```
