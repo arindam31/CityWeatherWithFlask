@@ -6,6 +6,7 @@ import click
 @click.command('load_data')
 @with_appcontext
 def load_mock_data_command():
+    """This command will load the database with data from the mock json file."""
     from app import db
 
     with open("weather.json") as fop:
@@ -42,7 +43,14 @@ def purge_db():
     """Deletes all data from the database."""
     from app import db
 
-    db.session.query(Forecast).delete()  # Delete Forecast records first (due to FK constraint)
-    db.session.query(CityWeather).delete()  # Then delete CityWeather records
+    db.session.query(Forecast).delete()
+    db.session.query(CityWeather).delete()
     db.session.commit()
     click.echo("Database purged successfully.")
+
+@click.command("create-db")
+@with_appcontext
+def create_db_file():
+    from app import db
+    db.create_all()
+    click.echo("Database created as mentioned in default config.")

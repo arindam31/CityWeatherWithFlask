@@ -1,11 +1,19 @@
 # Database commands during setup and general maintainence
 
-- To check if db was created:
+### Create a local sqlite db for development and populate data from json file.
+```bash
+flask create-db
+flask load-data
+```
+**Note**: Check if a app.sqlite3 file has been create at root.
+
+### On docker, to check if db was created:
  ```bash
  docker exec -it mysql_container mysql -u root -p
  SHOW DATABASES;
  ```
- If you see something like this, then our db got created
+ 
+ The db got created if the following is observed.
 
  ```sql
  mysql> SHOW DATABASES;
@@ -32,7 +40,7 @@ SHOW GRANTS FOR 'projectuser'@'%';
 3 rows in set (0.00 sec)
 ```
 
-- To generate migration files and create tables
+### To generate migration files and create tables
  ```bash
 docker exec -ti flask_app_container flask db init
 docker exec -ti flask_app_container flask db upgrade

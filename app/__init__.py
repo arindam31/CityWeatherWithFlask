@@ -2,7 +2,7 @@ import json
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from config import Config
+from config import Config, TestingConfig
 
 
 db = SQLAlchemy()
@@ -15,29 +15,32 @@ def load_mock_data(filename):
         json_data = json.load(fop)
     return json_data
 
+# Loading mock data
+mock_data = load_mock_data("weather.json")
 
-def create_app():
+
+def create_app(config_name="default"):
     app = Flask(__name__)
 
-    app.config.from_object(Config)
+    if config_name == "testing":
+        app.config.from_object(TestingConfig)
+    else:
+        app.config.from_object(Config)
     db.init_app(app)
     migrate.init_app(app, db)
-
+    
+    # Blueprints registration.
+    from app.blueprints import weather_bp
+    app.register_blueprint(weather_bp, url_prefix="/api")
     return app
 
 
 app = create_app()
 
-# Loading mock data
-mock_data = load_mock_data("weather.json")
-
 from app import routes, models
-from app.commands import load_mock_data_command, purge_db
-from app.blueprints import weather_bp
-
-# Blueprints registration.
-app.register_blueprint(weather_bp, url_prefix="/api")
+from app.commands import load_mock_data_command, purge_db, create_db_file
 
 # Command registration
-app.cli.add_command(name="load_data", cmd=load_mock_data_command)
-app.cli.add_command(name="purge_data", cmd=purge_db)
+app.cli.add_command(name="load-data", cmd=load_mock_data_command)
+app.cli.add_command(name="purge-data", cmd=purge_db)
+app.cli.add_command(name="create-db", cmd=create_db_file)
