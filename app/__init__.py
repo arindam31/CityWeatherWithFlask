@@ -30,8 +30,9 @@ def create_app(config_name="default"):
     migrate.init_app(app, db)
     
     # Blueprints registration.
-    from app.blueprints import weather_bp
+    from app.blueprints import weather_bp, live_weather_bp
     app.register_blueprint(weather_bp, url_prefix="/api")
+    app.register_blueprint(live_weather_bp, url_prefix="/api")
     return app
 
 
