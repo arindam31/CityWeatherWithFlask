@@ -3,7 +3,7 @@ from flask.cli import with_appcontext
 from .models import Forecast, CityWeather
 import click
 
-@click.command('load_data')
+@click.command('load-data')
 @with_appcontext
 def load_mock_data_command():
     """This command will load the database with data from the mock json file."""

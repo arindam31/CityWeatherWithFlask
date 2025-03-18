@@ -1,51 +1,63 @@
-# Flask Template project
-- User auth with JWT
-- Online API document with Swagger
-- Connexions usage
-- Logging
-- Permissions
+# Weather data APIs with Flask
 
-# QUICK Start
-- create a .env file at root. Add variables as shown below.
-- On shell, use: flask run
+![Build](https://img.shields.io/github/actions/workflow/status/arindam31/Interview_management/django.yml?branch=main) ![Python](https://img.shields.io/badge/python-3.12%2B-blue)  
+
+## Features
+- Fully Dockerized
+- Live data from online service
+- MySQL database used.
+- Synchronized data
+- Restfull APIs
+- Continuous testing with github actions. (see github actions history)
+
+
+## 🚀 QUICK Start
+```bash
+git clone https://github.com/arindam31/Flask_Construction_Gis.git
+cd Flask_Construction_Gis
+```
+- To run with flask commands:
+```bash
+    flask run
+```
 - Visit url: 127:0.0.1:5000
 
-# ENV file contents
-Add these in the .env file:
-```
-FLASK_APP=app
-FLASK_ENV=development
-```
 
+## Setting up environment:
+- Clone the project from github/gitlab
+- Create a virtual environment.
+    ```bash
+    python -m venv .venv
+    ```
+- Activate it (for windows)
+  ```bash
+  .venv/Scrpts/activate
+  ```
+- Create a local database and populate data.
+  ```bash
+  flask create-db
+  flask load-data
+  ```
+- Test your setup
+  - Check for routes or run API tests
+  ```bash
+  flask routes
+  pytest -v
+  ```
 
-# Running the project
-- With flask command directly:
- ```bash
- flask run
- ```
+## 🧪 Running Tests
 
-- Start the docker container
- ```bash
- docker compose up --build
- ```
+📌 The tests are located under `/tests`.  
 
-# Command execution with docker.
-- To execute commands inside the container:
- ```bash
-docker exec -ti flask_app_container bash
- ```
+```bash
+  pytest
+  pytest -s # To see prints too
+  pytest -s -k "keyword" # Run tests matching a keyword
+  ```
 
- # To see flask routes
- ```bash
-docker exec -it flask_app_container flask routes
+  ## 📜 Documentation
 
-Endpoint                                Methods    Rule
--------------------------------------  ---------  ---------------------------------
-get_city_forecast                       GET        /forecast/<city>/<date>
-get_city_forecast                       GET        /forecast/<city>/
-static                                  GET        /static/<path:filename>
-weather.cityweatherfromdatabaselistapi  GET, POST  /api/cityweather/db/<string:city>/<string:date>
-weather.cityweatherfromdatabaselistapi  GET, POST  /api/cityweather/db/<string:city>
-weather.cityweatherwithmockdatalistapi  GET        /api/cityweather/mocked/<string:city>/<string:date>
-weather.cityweatherwithmockdatalistapi  GET        /api/cityweather/mocked/<string:city>
- ```
+📄 Detail documentation on sub topics are available in the docs/ directory.
+
+  ## 🙌 Contributors
+👤 Arindam Roychowdhury
