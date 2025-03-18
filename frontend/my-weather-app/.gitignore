@@ -1,25 +1,3 @@
-# Python virtual environment
-.venv/
-
-# Environment variables file
-.env
-
-# Python bytecode files
-*.pyc
-__pycache__/
-
-# Pytest cache
-.pytest_cache/
-
-# Coverage reports
-.coverage
-htmlcov/
-
-# databases
-*.db
-*.sqlite3
-
-## Frontend project ignored items
 # Logs
 logs
 *.log

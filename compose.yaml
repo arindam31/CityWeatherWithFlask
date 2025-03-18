@@ -18,7 +18,8 @@ services:
 
   flask_app:
     build: .
-    container_name: flask_app_container
+    image: flask_backend_weather_image
+    container_name: flask_backend_weather_container
     restart: always
     environment:
       - FLASK_APP=app
