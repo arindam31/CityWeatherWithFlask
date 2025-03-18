@@ -1,7 +1,7 @@
-from app import mock_data
+from app import mock_data, db
 from app.models import CityWeather, Forecast
 from flask_restful import Resource
-from flask import jsonify
+from flask import jsonify, request, make_response
 
 
 class CityWeatherWithMockDataListAPI(Resource):
@@ -25,12 +25,11 @@ class CityWeatherWithMockDataListAPI(Resource):
     
 
 class CityWeatherFromDatabaseListAPI(Resource):
-    """This api gets data from database after  mock data was loaded into database.
+    """This api gets data from database after mock data was loaded into database.
     The data was loaded with custom commands into db from same weather.json file.
     Note: User command : `flask load_data` to load data before trying this API.
     """
     def get(self, city, date=None):
-        # Check if city exists in the database
         city_weather = CityWeather.query.filter_by(city=city).first()
         if not city_weather:
             return {"message": "Invalid city"}, 404
@@ -63,4 +62,34 @@ class CityWeatherFromDatabaseListAPI(Resource):
         ])
 
     def post(self):
-        pass
+        data = request.get_json()
+        city_weather = CityWeather(city=data["city"])
+        db.session.add(city_weather)
+        db.session.commit()
+        return make_response(city_weather.to_dict(), 201)
+    
+
+class CityWeatherDetailsFromDatabase(Resource):
+    def get(self, id):
+        city_weather = CityWeather.query.filter_by(id=id).first()
+        if not city_weather:
+            return {"message": "Invalid city"}, 404
+        return city_weather.to_dict(), 200
+        
+    def patch(self, id):
+        data = request.get_json()
+        city_weather = CityWeather.query.filter_by(id=id).first()
+
+        for attr in data:
+            setattr(city_weather, attr, data[attr])
+
+        db.session.add(city_weather)
+        db.session.commit()
+        return city_weather.to_dict(), 202
+    
+    def delete(self, id):
+        city_weather = CityWeather.query.filter_by(id=id).first()
+        db.session.delete(city_weather)
+        db.session.commit()
+        return make_response('', 204)
+

@@ -12,6 +12,12 @@ class CityWeather(db.Model):
 
     def __repr__(self):
         return f"<CityWeather(id={self.id}, city={self.city})>"
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'city': self.city,
+        }
 
 
 class Forecast(db.Model):
