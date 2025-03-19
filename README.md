@@ -30,7 +30,7 @@ Following things are demoed:
   cd Flask_Construction_Gis
 ```
 
-For backend
+For backend (create venv and activate it)
 ```bash
   pip install -r requirements.txt
   flask create-db

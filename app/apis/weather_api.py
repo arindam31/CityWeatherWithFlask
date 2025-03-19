@@ -20,23 +20,6 @@ class CityWeatherWithMockDataListAPI(Resource):
             required: false
             description: "Optional. Date to filter forecasts (Format: YYYY-MM-DD)"
         
-        definitions:
-          Forecast:
-            type: object
-            properties:
-              condition:
-                type: string
-                example: "Haze"
-              humidity:
-                type: string
-                example: "78%"
-              temperature:
-                type: string
-                example: "27.96°C"
-              wind_speed:
-                type: string
-                example: "5.14 km/h"
-        
         responses:
           200:
             description: A list of forecasts for the given city and optional date
@@ -102,23 +85,6 @@ class CityWeatherFromDatabaseListAPI(Resource):
             required: false
             description: "Optional. Date to filter forecasts (Format: YYYY-MM-DD)"
         
-        definitions:
-          Forecast:
-            type: object
-            properties:
-              condition:
-                type: string
-                example: "Haze"
-              humidity:
-                type: string
-                example: "78%"
-              temperature:
-                type: string
-                example: "27.96°C"
-              wind_speed:
-                type: string
-                example: "5.14 km/h"
-        
         responses:
           200:
             description: A list of forecasts for the given city and optional date
@@ -163,7 +129,7 @@ class CityWeatherFromDatabaseListAPI(Resource):
                 })
             return {"message": f"No forecast data found for {city} and date: {date}"}, 404
 
-        # Get all forecasts for the city
+        # Get latest 7 forecasts for the city
         forecasts = Forecast.query.filter_by(city_id=city_weather.id).order_by(Forecast.id.desc()).limit(7).all()
         return jsonify([
             {
@@ -290,6 +256,8 @@ class CityWeatherDetailsFromDatabase(Resource):
         """
         data = request.get_json()
         city_weather = CityWeather.query.filter_by(id=id).first()
+        if not city_weather:
+            return {"message": "Invalid city id"}, 404
 
         for attr in data:
             setattr(city_weather, attr, data[attr])

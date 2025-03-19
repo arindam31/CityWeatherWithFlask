@@ -25,23 +25,6 @@ class CityWeatherFromWeatherService(Resource):
         required: true
         description: The city name to get the forecast for
     
-    definitions:
-      Forecast:
-        type: object
-        properties:
-          condition:
-            type: string
-            example: "Haze"
-          humidity:
-            type: string
-            example: "78%"
-          temperature:
-            type: string
-            example: "27.96°C"
-          wind_speed:
-            type: string
-            example: "5.14 km/h"
-
     responses:
       200:
         description: A forecast for the given city
@@ -107,23 +90,6 @@ class CityWeatherFromWeatherServiceOrDb(Resource):
         required: true
         description: The city name to get the forecast for
     
-    definitions:
-      Forecast:
-        type: object
-        properties:
-          condition:
-            type: string
-            example: "Haze"
-          humidity:
-            type: string
-            example: "78%"
-          temperature:
-            type: string
-            example: "27.96°C"
-          wind_speed:
-            type: string
-            example: "5.14 km/h"
-
     responses:
       200:
         description: A forecast for the given city

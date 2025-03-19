@@ -4,7 +4,7 @@ from app import app, mock_data
 @app.route("/forecast/<city>/")
 @app.route("/forecast/<city>/<date>")
 def get_city_forecast(city, date: str = None):
-    """Example endpoint returning a list of forecasts from mock_data.
+    """Example endpoint returning a list of forecasts from mock data loaded from weather.json file.
     ---
     parameters:
       - name: city
