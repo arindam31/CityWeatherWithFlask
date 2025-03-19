@@ -4,7 +4,7 @@ services:
     container_name: mysql_container
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: $*ItSComplicated*$
+      MYSQL_ROOT_PASSWORD: ItSComplicated
       MYSQL_DATABASE: flask_proj_db
       MYSQL_USER: projectuser
       MYSQL_PASSWORD: onecomplexpasswrd
@@ -18,7 +18,8 @@ services:
 
   flask_app:
     build: .
-    container_name: flask_app_container
+    image: flask_backend_weather_image
+    container_name: flask_backend_weather_container
     restart: always
     environment:
       - FLASK_APP=app

@@ -48,7 +48,7 @@ class CityWeatherFromDatabaseListAPI(Resource):
             return {"message": f"No forecast data found for {city} and date: {date}"}, 404
 
         # Get all forecasts for the city
-        forecasts = Forecast.query.filter_by(city_id=city_weather.id).all()
+        forecasts = Forecast.query.filter_by(city_id=city_weather.id).order_by(Forecast.id.desc()).limit(7).all()
         return jsonify([
             {
                 "id": f.id,
