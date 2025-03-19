@@ -44,7 +44,7 @@
   ```
 - Create a local database and populate data.
   ```bash
-  flask db upgrade
+  flask create-db
   flask load-data
   ```
 - Test your setup
