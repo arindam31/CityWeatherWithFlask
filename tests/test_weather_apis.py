@@ -7,7 +7,7 @@ from datetime import timedelta as td
 def test_get_valid_city_and_date(client, add_test_data):
     """Test fetching weather for a valid city from database using API."""
 
-    url = f"/api/cityweather/db/{add_test_data}/{(dt.today() + td(days=random.randint(0,7))).strftime("%Y-%m-%d")}"
+    url = f"/api/cityweather/db/{add_test_data}/{(dt.today() + td(days=random.randint(0,6))).strftime("%Y-%m-%d")}"
     response = client.get(url)
     assert response.status_code == 200
     assert list(response.json.keys()) == [
