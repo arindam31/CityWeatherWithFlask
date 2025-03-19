@@ -35,7 +35,7 @@ cd Flask_Construction_Gis
   ```
 - Create a local database and populate data.
   ```bash
-  flask create-db
+  flask db upgrade
   flask load-data
   ```
 - Test your setup

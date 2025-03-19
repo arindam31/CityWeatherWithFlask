@@ -15,7 +15,7 @@ def load_mock_data_command():
 
     for city_data in json_data:
         # check if data already present for city
-        city_content =  CityWeather.query.filter_by(city=city_data["city"])
+        city_content =  CityWeather.query.filter_by(city=city_data["city"]).first()
         if city_content:
             continue
         
