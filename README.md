@@ -20,7 +20,7 @@ Following things are demoed:
 🛡️ Synchronized data  
 🛡️ Restfull APIs  
 🛡️ Continuous testing with github actions. (see github actions history)  
-🛡️ Swagger document for trying APIs
+🛡️ Swagger document for trying APIs  
 🛡️ Minimal Frontend with React to see weather data and search for cities to see current weather.
 
 
