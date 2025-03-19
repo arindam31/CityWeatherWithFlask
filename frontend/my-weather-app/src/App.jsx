@@ -6,13 +6,24 @@ const App = () => {
   const [weatherData, setWeatherData] = useState(null);
 
   const fetchWeather = async (city) => {
-    const mockData = {
-      city: city,
-      temp: 22,
-      humidity: 60,
-      condition: 'Clear',
-    };
-    setWeatherData(mockData);
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/api/cityweather/db/${city}`);
+      const data = await response.json();
+      
+      
+      // Mapping API response to your display format
+      const formattedData = data.map(item => ({
+        city: city,
+        temp: item.temperature,
+        humidity: item.humidity,
+        condition: item.condition,
+        date: item.date,
+      }));
+      
+      setWeatherData(formattedData);
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
   };
 
   return (

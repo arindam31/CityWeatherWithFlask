@@ -1,5 +1,6 @@
 import json
 from flask import Flask
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config, TestingConfig
@@ -21,6 +22,8 @@ mock_data = load_mock_data("weather.json")
 
 def create_app(config_name="default"):
     app = Flask(__name__)
+
+    CORS(app, origins=["http://localhost:5173"])
 
     if config_name == "testing":
         app.config.from_object(TestingConfig)
