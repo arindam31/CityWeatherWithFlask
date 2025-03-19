@@ -1,9 +1,11 @@
 import json
 from flask import Flask
+from flasgger import Swagger
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config, TestingConfig
+from swagger_config import swagger_template 
 
 
 db = SQLAlchemy()
@@ -22,6 +24,7 @@ mock_data = load_mock_data("weather.json")
 
 def create_app(config_name="default"):
     app = Flask(__name__)
+    swagger = Swagger(app, template=swagger_template)
 
     CORS(app, origins=["http://localhost:5173"])
 
