@@ -9,6 +9,12 @@ const App = () => {
     try {
       const response = await fetch(`http://127.0.0.1:5000/api/cityweather/db/${city}`);
       const data = await response.json();
+
+      // Check if response is an error object
+    if (!Array.isArray(data) || data.length === 0) {
+      setWeatherData("No stored data found for the provided city.");
+      return;
+    }
       
       // Mapping API response to your display format
       const formattedData = data.map(item => ({
@@ -22,12 +28,13 @@ const App = () => {
       setWeatherData(formattedData);
     } catch (error) {
       console.error("Error fetching weather data:", error);
+      setWeatherData("Failed to fetch weather data.");
     }
   };
 
   const fetchTodaysWeather = async (city) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/weather/live/${city}`);
+      const response = await fetch(`http://127.0.0.1:5000/api/weather/today/${city}`);
       const data = await response.json();
       
       // Directly use the data since it's a single object

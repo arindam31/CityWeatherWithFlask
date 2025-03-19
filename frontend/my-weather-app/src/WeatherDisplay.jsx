@@ -3,7 +3,7 @@ import React from 'react';
 const WeatherDisplay = ({ weatherData }) => {
   return (
     <div className="d-flex flex-wrap justify-content-center">
-      {weatherData ? (
+      {Array.isArray(weatherData) && weatherData.length > 0 ? (
         weatherData.map((weatherItem, index) => (
           <div className="card p-4 shadow-sm mx-2 my-3" style={{ maxWidth: '300px' }} key={index}>
             <div className="card-body">
@@ -16,7 +16,7 @@ const WeatherDisplay = ({ weatherData }) => {
           </div>
         ))
       ) : (
-        <p className="text-muted">Enter a city to get the weather forecast.</p>
+        <p className="text-muted">{typeof weatherData === "string" ? weatherData : "Enter a city to get the weather forecast."}</p>
       )}
     </div>
   );
