@@ -1,0 +1,50 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ItSComplicated
+      MYSQL_DATABASE: flask_proj_db
+      MYSQL_USER: projectuser
+      MYSQL_PASSWORD: onecomplexpasswrd
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql 
+
+  flask_app:
+    build: .
+    image: flask_backend_weather_image
+    container_name: flask_backend_weather_container
+    restart: always
+    environment:
+      - FLASK_APP=app
+      - FLASK_ENV=development
+      - DOCKERIZED=1
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend/my-weather-app
+      dockerfile: Dockerfile
+    image: vite_weather_frontend
+    container_name: vite_weather_frontend_container
+    restart: always
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/my-weather-app:/app
+      - /app/node_modules
+    depends_on:
+      - flask_app
+    command: ["npm", "run", "dev", "--", "--host"]
+
+volumes:
+  mysql_data:
