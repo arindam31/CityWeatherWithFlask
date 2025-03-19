@@ -2,20 +2,23 @@
 
 ![Build](https://img.shields.io/github/actions/workflow/status/arindam31/Interview_management/django.yml?branch=main) ![Python](https://img.shields.io/badge/python-3.12%2B-blue)
 
-## A flask project showing
+## A flask project that stores and displays weather data of cities.
+
+Following things are demoed:
 
   ✅ Receiving data from mock data (json file included) in an API.  
   ✅ Receiving data from MySQL database (loaded from json file)  
-  ✅ Get live weather data for current day with an API  
-  ✅ Usage of docker to orchestrate complete setup with test data loaded
+  ✅ Get live weather data for current day with an API.  
+  ✅ Usage of docker to orchestrate complete setup with mock data loaded.
 
-## Features
+## Project Features
 🛡️ Live data from online weather service  
 🛡️ Fully Dockerized  
 🛡️ MySQL database used  
 🛡️ Synchronized data  
 🛡️ Restfull APIs  
-🛡️ Continuous testing with github actions. (see github actions history)
+🛡️ Continuous testing with github actions. (see github actions history)  
+🛡️ Swagger document for trying APIs
 
 
 ## 🚀 QUICK Start
@@ -29,7 +32,7 @@
   flask load-data
   flask run
 ```
-- Visit url: 127:0.0.1:500/api/cityweather/db/Vienna
+- Visit and browse API lists with Swagger docs: http://127.0.0.1:5000/apidocs/
 
 
 ## Setting up local environment:
