@@ -13,17 +13,19 @@
 
 ## 🚀 QUICK Start
 ```bash
-git clone https://github.com/arindam31/Flask_Construction_Gis.git
-cd Flask_Construction_Gis
+  git clone https://github.com/arindam31/Flask_Construction_Gis.git
+  cd Flask_Construction_Gis
 ```
-- To run with flask commands:
 ```bash
-    flask run
+  pip install -r requirements.txt
+  flask create-db
+  flask load data
+  flask run
 ```
-- Visit url: 127:0.0.1:5000
+- Visit url: 127:0.0.1:500/api/cityweather/db/Vienna
 
 
-## Setting up environment:
+## Setting up local environment:
 - Clone the project from github/gitlab
 - Create a virtual environment.
     ```bash
