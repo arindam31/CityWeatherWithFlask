@@ -1,6 +1,6 @@
 # Weather data APIs with Flask and React
 
-![Build](https://img.shields.io/github/actions/workflow/status/arindam31/Interview_management/django.yml?branch=main) ![Python](https://img.shields.io/badge/python-3.12%2B-blue) ![Flask](https://img.shields.io/badge/Flask-000?logo=flask&logoColor=fff)
+![Build](https://img.shields.io/github/actions/workflow/status/arindam31/CityWeatherWithFlask/ci.yml?branch=master) ![Python](https://img.shields.io/badge/python-3.12%2B-blue) ![Flask](https://img.shields.io/badge/Flask-000?logo=flask&logoColor=fff)
 
 ![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB) ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff)
 
